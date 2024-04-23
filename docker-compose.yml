@@ -1,0 +1,20 @@
+services:
+  frontend:
+    container_name: expense-frontend
+    image: chewycoookies/in6225-frontend:latest
+    ports:
+      - "3000:3000"  # Map container port 80 to host port 3000 or any other desired port
+    depends_on:
+      - backend
+    networks:
+      - my-network
+  backend:
+    container_name: expense-backend
+    image: chewycoookies/in6225-backend:latest
+    ports:
+      - "8080:8080"  # Map container port 8080 to host port 8080 or any other desired port
+    networks:
+      - my-network
+networks:
+  my-network:
+    driver: bridge
